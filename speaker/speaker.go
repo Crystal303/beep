@@ -2,6 +2,7 @@
 package speaker
 
 import (
+	"fmt"
 	"io"
 	"sync"
 	"time"
@@ -33,8 +34,11 @@ var (
 // bufferSize means lower CPU usage and more reliable playback. Lower bufferSize means better
 // responsiveness and less delay.
 func Init(sampleRate beep.SampleRate, bufferSize int) error {
-	if context != nil {
+	if context != nil && context.Err() == nil {
 		return errors.New("speaker cannot be initialized more than once")
+	}
+	if context != nil && context.Err() != nil {
+		fmt.Printf("oto: context error: %v\n", context.Err())
 	}
 
 	mixer = beep.Mixer{}
@@ -78,6 +82,14 @@ func Close() {
 		player.Close()
 		player = nil
 		Clear()
+	}
+}
+
+func Err() error {
+	if context != nil {
+		return context.Err()
+	} else {
+		return errors.New("speaker is not initialized")
 	}
 }
 
