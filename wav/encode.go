@@ -8,7 +8,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/gopxl/beep/v2"
+	"github.com/Crystal303/beep"
 )
 
 // Encode writes all audio streamed from s to w in WAVE format.

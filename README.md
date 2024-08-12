@@ -6,11 +6,10 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/gopxl/beep)](https://goreportcard.com/report/github.com/gopxl/beep)
 [![Discord Chat](https://img.shields.io/discord/1158461233121468496)](https://discord.gg/erpa32cB)
 
-
 A little package that brings sound to any Go application. Suitable for playback and audio-processing.
 
 ```
-go get -u github.com/gopxl/beep/v2
+go get -u github.com/Crystal303/beep
 ```
 
 ## Features
@@ -37,7 +36,7 @@ The [Wiki](https://github.com/gopxl/beep/wiki) contains a handful of tutorials f
 ## Examples
 
 | [Speedy Player](https://github.com/gopxl/beep/tree/main/examples/speedy-player)                 | [Doppler Stereo Room](https://github.com/gopxl/beep/tree/main/examples/doppler-stereo-room)                 |
-|-------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | ![Speedy Player](https://github.com/gopxl/beep/blob/main/examples/speedy-player/screenshot.png) | ![Doppler Stereo Room](https://github.com/gopxl/beep/blob/main/examples/doppler-stereo-room/screenshot.png) |
 
 ## Dependencies
@@ -55,5 +54,6 @@ Running an already built application should work with no extra dependencies.
 - [Microphone support for Beep (a wrapper around PortAudio)](https://github.com/MarkKremer/microphone)
 
 ## Projects using Beep
+
 - [retro](https://github.com/Malwarize/retro)
 - [Mifasol music server](https://github.com/jypelle/mifasol)

@@ -5,8 +5,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/gopxl/beep/v2"
-	"github.com/gopxl/beep/v2/internal/testtools"
+	"github.com/Crystal303/beep"
+	"github.com/Crystal303/beep/internal/testtools"
 
 	"github.com/stretchr/testify/assert"
 )

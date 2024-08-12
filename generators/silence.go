@@ -1,6 +1,6 @@
 package generators
 
-import "github.com/gopxl/beep/v2"
+import "github.com/Crystal303/beep"
 
 // Silence returns a Streamer which streams num samples of silence. If num is negative, silence is
 // streamed forever.

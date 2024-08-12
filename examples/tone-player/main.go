@@ -6,9 +6,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/gopxl/beep/v2"
-	"github.com/gopxl/beep/v2/generators"
-	"github.com/gopxl/beep/v2/speaker"
+	"github.com/Crystal303/beep"
+	"github.com/Crystal303/beep/generators"
+	"github.com/Crystal303/beep/speaker"
 )
 
 func usage() {

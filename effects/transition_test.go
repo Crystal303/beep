@@ -3,10 +3,10 @@ package effects_test
 import (
 	"time"
 
-	"github.com/gopxl/beep/v2"
-	"github.com/gopxl/beep/v2/effects"
-	"github.com/gopxl/beep/v2/generators"
-	"github.com/gopxl/beep/v2/speaker"
+	"github.com/Crystal303/beep"
+	"github.com/Crystal303/beep/effects"
+	"github.com/Crystal303/beep/generators"
+	"github.com/Crystal303/beep/speaker"
 )
 
 // Cross-fade between two sine tones.

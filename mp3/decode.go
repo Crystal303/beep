@@ -8,7 +8,7 @@ import (
 	gomp3 "github.com/hajimehoshi/go-mp3"
 	"github.com/pkg/errors"
 
-	"github.com/gopxl/beep/v2"
+	"github.com/Crystal303/beep"
 )
 
 const (

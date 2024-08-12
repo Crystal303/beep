@@ -5,8 +5,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/gopxl/beep/v2"
-	"github.com/gopxl/beep/v2/internal/testtools"
+	"github.com/Crystal303/beep"
+	"github.com/Crystal303/beep/internal/testtools"
 )
 
 func TestTake(t *testing.T) {

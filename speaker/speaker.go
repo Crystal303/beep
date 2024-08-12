@@ -7,11 +7,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ebitengine/oto/v3"
+	"github.com/Crystal303/oto"
 	"github.com/pkg/errors"
 
-	"github.com/gopxl/beep/v2"
-	"github.com/gopxl/beep/v2/internal/util"
+	"github.com/Crystal303/beep"
+	"github.com/Crystal303/beep/internal/util"
 )
 
 const channelCount = 2

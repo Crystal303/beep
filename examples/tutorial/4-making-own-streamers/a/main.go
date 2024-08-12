@@ -4,8 +4,8 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/gopxl/beep/v2"
-	"github.com/gopxl/beep/v2/speaker"
+	"github.com/Crystal303/beep"
+	"github.com/Crystal303/beep/speaker"
 )
 
 func Noise() beep.Streamer {

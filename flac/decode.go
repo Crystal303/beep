@@ -7,7 +7,7 @@ import (
 	"github.com/mewkiz/flac"
 	"github.com/pkg/errors"
 
-	"github.com/gopxl/beep/v2"
+	"github.com/Crystal303/beep"
 )
 
 // Decode takes a Reader containing audio data in FLAC format and returns a StreamSeekCloser,

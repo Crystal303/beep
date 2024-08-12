@@ -3,7 +3,7 @@ package testtools
 import (
 	"math/rand"
 
-	"github.com/gopxl/beep/v2"
+	"github.com/Crystal303/beep"
 )
 
 // RandomDataStreamer generates numSamples random samples and returns a StreamSeeker to stream them.

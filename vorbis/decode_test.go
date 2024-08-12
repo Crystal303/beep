@@ -6,8 +6,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/gopxl/beep/v2/internal/testtools"
-	"github.com/gopxl/beep/v2/vorbis"
+	"github.com/Crystal303/beep/internal/testtools"
+	"github.com/Crystal303/beep/vorbis"
 )
 
 func TestDecoder_ReturnBehaviour(t *testing.T) {

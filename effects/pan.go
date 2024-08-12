@@ -1,6 +1,6 @@
 package effects
 
-import "github.com/gopxl/beep/v2"
+import "github.com/Crystal303/beep"
 
 // Pan balances the wrapped Streamer between the left and the right channel. The Pan field value of
 // -1 means that both original channels go through the left channel. The value of +1 means the same

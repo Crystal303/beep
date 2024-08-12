@@ -7,7 +7,7 @@ import (
 	"github.com/jfreymuth/oggvorbis"
 	"github.com/pkg/errors"
 
-	"github.com/gopxl/beep/v2"
+	"github.com/Crystal303/beep"
 )
 
 const (

@@ -8,10 +8,10 @@ import (
 
 	"github.com/gdamore/tcell/v2"
 
-	"github.com/gopxl/beep/v2"
-	"github.com/gopxl/beep/v2/effects"
-	"github.com/gopxl/beep/v2/mp3"
-	"github.com/gopxl/beep/v2/speaker"
+	"github.com/Crystal303/beep"
+	"github.com/Crystal303/beep/effects"
+	"github.com/Crystal303/beep/mp3"
+	"github.com/Crystal303/beep/speaker"
 )
 
 func drawTextLine(screen tcell.Screen, x, y int, s string, style tcell.Style) {

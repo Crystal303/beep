@@ -5,7 +5,7 @@ import (
 	"math"
 	"time"
 
-	"github.com/gopxl/beep/v2/internal/util"
+	"github.com/Crystal303/beep/internal/util"
 )
 
 // SampleRate is the number of samples per second.

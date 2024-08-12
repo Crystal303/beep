@@ -3,7 +3,7 @@ package effects
 import (
 	"math"
 
-	"github.com/gopxl/beep/v2"
+	"github.com/Crystal303/beep"
 )
 
 // TransitionFunc defines a function used in a transition to describe the progression curve
