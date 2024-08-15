@@ -26,6 +26,9 @@ var (
 	player  *oto.Player
 
 	bufferDuration time.Duration
+
+	// writeChannel is used to pass data from the mixer to the player.
+	writeChannel chan []byte
 )
 
 // Init initializes audio playback through speaker. Must be called before using this package.
@@ -68,6 +71,7 @@ func Init(sampleRate beep.SampleRate, bufferSize int) error {
 	player.SetBufferSize(playerBufferSize * bytesPerSample)
 	player.Play()
 
+	writeChannel = make(chan []byte, 10)
 	bufferDuration = sampleRate.D(bufferSize)
 
 	return nil
@@ -161,6 +165,16 @@ func Clear() {
 	mu.Unlock()
 }
 
+func Read() []byte {
+	ticker := time.NewTicker(200 * time.Millisecond)
+	select {
+	case buf := <-writeChannel:
+		return buf
+	case <-ticker.C:
+		return []byte{}
+	}
+}
+
 // sampleReader is a wrapper for beep.Streamer to implement io.Reader.
 type sampleReader struct {
 	s   beep.Streamer
@@ -206,6 +220,13 @@ func (s *sampleReader) Read(buf []byte) (n int, err error) {
 			buf[i*bytesPerSample+c*bitDepthInBytes+0] = low
 			buf[i*bytesPerSample+c*bitDepthInBytes+1] = high
 		}
+	}
+	// Write samples to the channel
+	data := make([]byte, len(buf))
+	copy(data, buf)
+	select {
+	case writeChannel <- data:
+	default:
 	}
 
 	return ns * bytesPerSample, nil
