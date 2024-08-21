@@ -166,7 +166,8 @@ func Clear() {
 }
 
 func Read() []byte {
-	ticker := time.NewTicker(200 * time.Millisecond)
+	ticker := time.NewTicker(150 * time.Millisecond)
+	defer ticker.Stop()
 	select {
 	case buf := <-writeChannel:
 		return buf
