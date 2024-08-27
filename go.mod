@@ -3,7 +3,7 @@ module github.com/Crystal303/beep
 go 1.21
 
 require (
-	github.com/Crystal303/oto v0.0.2
+	github.com/Crystal303/oto v0.0.3
 	github.com/gdamore/tcell/v2 v2.7.4
 	github.com/hajimehoshi/go-mp3 v0.3.4
 	github.com/jfreymuth/oggvorbis v1.0.5
