@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"sync"
+	"sync/atomic"
 	"time"
 
 	"github.com/Crystal303/oto"
@@ -29,6 +30,7 @@ var (
 
 	// writeChannel is used to pass data from the mixer to the player.
 	writeChannel chan []byte
+	writeToggle  atomic.Bool
 )
 
 // Init initializes audio playback through speaker. Must be called before using this package.
@@ -36,12 +38,32 @@ var (
 // The bufferSize argument specifies the number of samples of the speaker's buffer. Bigger
 // bufferSize means lower CPU usage and more reliable playback. Lower bufferSize means better
 // responsiveness and less delay.
-func Init(sampleRate beep.SampleRate, bufferSize int) error {
+// options is a list of options.
+// first argument is a string, which is the name of the audio device.
+// second argument is a bool, which is the toggle of the writeChannel.
+func Init(sampleRate beep.SampleRate, bufferSize int, options ...interface{}) error {
 	if context != nil && context.Err() == nil {
 		return errors.New("speaker cannot be initialized more than once")
 	}
 	if context != nil && context.Err() != nil {
 		fmt.Printf("oto: context error: %v\n", context.Err())
+	}
+
+	device := ""
+	if len(options) > 0 {
+		name, ok := options[0].(string)
+		if ok {
+			device = name
+		}
+	}
+	if len(options) > 1 {
+		toggle, ok := options[1].(bool)
+		if ok {
+			writeToggle.Store(toggle)
+		}
+		if toggle {
+			writeChannel = make(chan []byte, 10)
+		}
 	}
 
 	mixer = beep.Mixer{}
@@ -61,6 +83,7 @@ func Init(sampleRate beep.SampleRate, bufferSize int) error {
 		ChannelCount: channelCount,
 		Format:       otoFormat,
 		BufferSize:   sampleRate.D(driverBufferSize),
+		Device:       device,
 	})
 	if err != nil {
 		return errors.Wrap(err, "failed to initialize speaker")
@@ -71,7 +94,6 @@ func Init(sampleRate beep.SampleRate, bufferSize int) error {
 	player.SetBufferSize(playerBufferSize * bytesPerSample)
 	player.Play()
 
-	writeChannel = make(chan []byte, 10)
 	bufferDuration = sampleRate.D(bufferSize)
 
 	return nil
@@ -166,6 +188,9 @@ func Clear() {
 }
 
 func Read() []byte {
+	if !writeToggle.Load() {
+		return []byte{}
+	}
 	ticker := time.NewTicker(150 * time.Millisecond)
 	defer ticker.Stop()
 	select {
@@ -223,11 +248,13 @@ func (s *sampleReader) Read(buf []byte) (n int, err error) {
 		}
 	}
 	// Write samples to the channel
-	data := make([]byte, len(buf))
-	copy(data, buf)
-	select {
-	case writeChannel <- data:
-	default:
+	if writeToggle.Load() {
+		data := make([]byte, len(buf))
+		copy(data, buf)
+		select {
+		case writeChannel <- data:
+		default:
+		}
 	}
 
 	return ns * bytesPerSample, nil
