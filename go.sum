@@ -1,5 +1,7 @@
 github.com/Crystal303/oto v0.0.3 h1:ibz2udehANuw9L6chBMYcFaIptGchfUI9XCNsLD3uDw=
 github.com/Crystal303/oto v0.0.3/go.mod h1:wJmcWMQ2e/iRyXiAQ9PR6tRf4a2Pt8YQibQi8Eb/Bjc=
+github.com/Crystal303/oto v0.0.4 h1:jay/v3l09oZksNG/dCxcdDXgBVsfE+kLlXzf2I43SfQ=
+github.com/Crystal303/oto v0.0.4/go.mod h1:6lbdEupDOfyWGNFmDGx4A0M7z22OO/IELEYolNyYyjQ=
 github.com/d4l3k/messagediff v1.2.2-0.20190829033028-7e0a312ae40b/go.mod h1:Oozbb1TVXFac9FtSIxHBMnBCq2qeH/2KkEQxENCrlLo=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
